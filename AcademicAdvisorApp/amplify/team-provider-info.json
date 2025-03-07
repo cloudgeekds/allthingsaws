@@ -1,0 +1,15 @@
+{
+  "demo": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-academicadvisorapp-demo-a8de2-authRole",
+      "UnauthRoleArn": "arn:aws:iam::337909743922:role/amplify-academicadvisorapp-demo-a8de2-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::337909743922:role/amplify-academicadvisorapp-demo-a8de2-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-academicadvisorapp-demo-a8de2-deployment",
+      "UnauthRoleName": "amplify-academicadvisorapp-demo-a8de2-unauthRole",
+      "StackName": "amplify-academicadvisorapp-demo-a8de2",
+      "StackId": "arn:aws:cloudformation:us-east-2:337909743922:stack/amplify-academicadvisorapp-demo-a8de2/3f2acae0-fb71-11ef-8557-0adad3d91119",
+      "AmplifyAppId": "d1v7d0xtkkzv34"
+    }
+  }
+}

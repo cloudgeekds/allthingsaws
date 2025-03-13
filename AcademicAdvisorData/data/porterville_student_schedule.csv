@@ -1,0 +1,6 @@
+student_id,term,course_code,print_daytime,building_number,room_number,class_days,class_start_time,class_end_time
+1,202408,BIOL P110,MWF 9:00am-9:50am,SCI,101,M W F,900,950
+1,202408,BIOL P115,TTh 1:00pm-2:15pm,SCI,102,T Th,1300,1415
+1,202408,CHEM P101B,TTh 10:00am-11:15am,CHEM,202,T Th,1000,1115
+2,202408,CHDV P117,MW 11:00am-12:15pm,EDU,105,M W,1100,1215
+2,202408,CHDV P119,TTh 9:00am-10:15am,EDU,106,T Th,900,1015

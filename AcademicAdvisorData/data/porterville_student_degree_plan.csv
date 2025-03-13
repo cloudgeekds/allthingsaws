@@ -1,0 +1,13 @@
+student_id,course_code,status
+1,BIOL P135,Completed
+1,BIOL P136,Pending
+1,PHYS P102A,Completed
+1,CHEM P101A,Completed
+1,MATH P103,Completed
+1,PHYS P104A,Completed
+2,CHDV P223,Completed
+2,CHDV P122,Completed
+2,CHDV P144,Completed
+2,CHDV P143,Completed
+2,CHDV P117,Pending
+2,CHDV P119,Pending

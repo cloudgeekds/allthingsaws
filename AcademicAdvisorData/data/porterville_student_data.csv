@@ -1,0 +1,9 @@
+student_id,first_name,last_name,term,course_code,credits,grade,major,cumulative_pga
+1,Jorge,Souza,202401,BIOL P105,4,A,Biology,3.2
+1,Jorge,Souza,202401,CHEM P101A,5,B,Biology,3.2
+1,Jorge,Souza,202401,MATH P103,4,B+,Biology,3.2
+1,Jorge,Souza,202401,PHYS P104A,4,A-,Biology,3.2
+2,Jane,Doe,202401,CHDV P223,3,B,Child Development,3
+2,Jane,Doe,202401,CHDV P122,3,A-,Child Development,3
+2,Jane,Doe,202401,CHDV P144,3,B+,Child Development,3
+2,Jane,Doe,202401,CHDV P143,3,A,Child Development,3

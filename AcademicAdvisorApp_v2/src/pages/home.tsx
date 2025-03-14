@@ -1,14 +1,53 @@
-// import { useEffect, useState } from 'react'
-import { TextContent, Box, Header, Container, SpaceBetween, Button } from "@cloudscape-design/components";
+import { Box, Header, Container, SpaceBetween} from "@cloudscape-design/components";
 import BaseAppLayout from "../components/base-app-layout";
-import { Class } from "../components/Class.tsx";
+import { useState } from "react";
+import { ChatMessages } from '../components/ChatMessages';
+import { ChatInput } from '../components/ChatInput';
 
 export default function HomePage() {
-  const handleLink = (url: string) => {
-    window.open(url, '_blank');
+  const [messages, setMessages] = useState<any[]>([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSendMessage = async (message: string) => {
+    if (!message.trim()) return;
+
+    setIsLoading(true);
+    // Add user message to chat
+    const userMessage = {
+      type: 'user',
+      content: message,
+      timestamp: new Date().toISOString(),
+    };
+    setMessages(prev => [...prev, userMessage]);
+
+    try {
+      // Your existing chat API call logic here
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await response.json();
+      
+      // Add bot response to chat
+      const botMessage = {
+        type: 'bot',
+        content: data.message,
+        timestamp: new Date().toISOString(),
+      };
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    } finally {
+      setIsLoading(false);
+      setInputMessage('');
+    }
   };
  
-
   return (
     <BaseAppLayout
       content={
@@ -17,10 +56,28 @@ export default function HomePage() {
             <Box margin={{ top: 'l' }}>
               <Header
                 variant="h1"
-                description="Tutor académico de LatamU"
+                description="🚀 Tu éxito estudiantil es nuestra prioridad"
               >
-                🤖Tutor Académico LatamAI
+                🤖 Tutor Académico LatamAI
               </Header>
+            </Box>
+            
+            {/* Chat Container */}
+            <Box>
+              {/* Chat Messages Area */}
+              <div style={{ height: '30vh', overflowY: 'auto', marginBottom: '20px' }}>
+                <ChatMessages messages={messages} />
+              </div>
+              
+              {/* Chat Input Area */}
+              <Box>
+                <ChatInput
+                  value={inputMessage}
+                  onChange={setInputMessage}
+                  onSend={handleSendMessage}
+                  isLoading={isLoading}
+                />
+              </Box>
             </Box>
           </SpaceBetween>
         </Container>
@@ -28,4 +85,3 @@ export default function HomePage() {
     />
   );
 }
-

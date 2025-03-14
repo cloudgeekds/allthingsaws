@@ -50,7 +50,7 @@ export default function GlobalHeader(props: any) {
       <TopNavigation
         identity={{
           href: '#',
-          title: `🤖 ${APP_NAME}`,
+          title: `⚛️ ${APP_NAME}`,
         }}
         utilities={utilities}
       />

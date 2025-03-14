@@ -66,7 +66,7 @@ export const createOrUpdateProfile = async (user: UserType) => {
         id: user.username,
         userId: user.username,
         name: user.attributes?.name || user.signInDetails?.loginId,
-        organization: user.attributes?.['custom:organization'] || 'AWS',
+        organization: user.attributes?.['custom:organization'] || 'LatamU',
         point: 0
       });
       console.log('New profile created');

@@ -34,7 +34,7 @@ export default function ProfilePage({ user, email, attributes }: ProfilePageProp
       if (profile) {
         setProfileInfo(prev => ({
           ...prev,
-          organization: profile.organization || attributes?.['custom:organization'] || 'AWS',
+          organization: profile.organization || attributes?.['custom:organization'] || 'LatamU',
           email: email
         }));
       }

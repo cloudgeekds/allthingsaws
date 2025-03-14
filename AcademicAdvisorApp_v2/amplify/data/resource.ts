@@ -60,6 +60,15 @@ const schema = a.schema({
       .handler(
           a.handler.custom({ entry: "./bedrock.js", dataSource: "bedrockDS" })
   ),
+    
+  converseBedrock: a
+    .query()
+    .arguments({ messages: a.string().required(), system: a.string() })
+    .returns(a.ref("BedrockResponse"))
+    .authorization(allow => allow.authenticated())
+    .handler(
+      a.handler.custom({ entry: "./bedrock-converse.js", dataSource: "bedrockDS" })
+  ),
 });
 
 export type Schema = ClientSchema<typeof schema>;

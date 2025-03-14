@@ -1,11 +1,13 @@
 // import { useEffect, useState } from 'react'
 import { TextContent, Box, Header, Container, SpaceBetween, Button } from "@cloudscape-design/components";
 import BaseAppLayout from "../components/base-app-layout";
+import { Class } from "../components/Class.tsx";
 
 export default function HomePage() {
   const handleLink = (url: string) => {
     window.open(url, '_blank');
   };
+ 
 
   return (
     <BaseAppLayout
@@ -26,3 +28,4 @@ export default function HomePage() {
     />
   );
 }
+

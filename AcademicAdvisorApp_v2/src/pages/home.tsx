@@ -38,36 +38,50 @@ export default function HomePage() {
 
   const sendMessage = async (messages: any[]) => {
     try {
-      console.log('Sending to Bedrock:', {
+      const response = await client.queries.converseBedrock({
         system: JSON.stringify([{ text: systemPrompt }]),
         messages: JSON.stringify(messages)
       });
 
-      const response = await client.queries.converseBedrock({ 
-        system: JSON.stringify([{ text: systemPrompt }]),
-        messages: JSON.stringify(messages) 
-      });
-
-      console.log('Raw Bedrock response:', response);
+      console.log('Raw response:', response);
 
       if (!response.data?.body) {
         throw new Error('Empty response from Bedrock');
       }
 
-      // Parse the response and extract just the text content
       const parsedBody = JSON.parse(response.data.body);
-      console.log('Parsed Bedrock response:', parsedBody);
+      console.log('Parsed body:', parsedBody);
 
-      // Return the text response directly
+      // Extract just the message content
+      let cleanResponse = '';
+      
+      if (parsedBody.output && parsedBody.output.message && parsedBody.output.message.content && parsedBody.output.message.content.text) {
+        cleanResponse = parsedBody.output.message.content.text;
+      } else {
+        // Fallback: try to find the text content in the response
+        const responseText = JSON.stringify(parsedBody);
+        const textMatch = responseText.match(/"text":"([^"]+)"/);
+        if (textMatch && textMatch[1]) {
+          cleanResponse = textMatch[1];
+        } else {
+          throw new Error('Could not find response text in Bedrock response');
+        }
+      }
+
+      console.log('Clean response:', cleanResponse);
+
       return {
         role: 'assistant',
-        content: [{ text: typeof parsedBody === 'string' ? parsedBody : JSON.stringify(parsedBody) }]
+        content: [{ text: cleanResponse }]
       };
     } catch (error) {
       console.error('Error in sendMessage:', error);
       throw error;
     }
   };
+
+
+
 
   const handleSendMessage = async (message: string) => {
     if (message.trim() !== "") {

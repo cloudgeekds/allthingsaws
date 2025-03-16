@@ -24,7 +24,8 @@ bedrockDataSource.grantPrincipal.addToPrincipalPolicy(
   new PolicyStatement({
     effect: Effect.ALLOW,
     resources: [
-      "arn:aws:bedrock:us-east-2::foundation-model/*",
+      "arn:aws:bedrock:*::foundation-model/*",
+      "arn:aws:bedrock:*:337909743922:inference-profile/*"
     ],
     actions: ["bedrock:InvokeModel"],
   })

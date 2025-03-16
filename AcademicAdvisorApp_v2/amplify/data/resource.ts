@@ -69,6 +69,8 @@ const schema = a.schema({
     .handler(
       a.handler.custom({ entry: "./bedrock-converse.js", dataSource: "bedrockDS" })
   ),
+
+
 });
 
 export type Schema = ClientSchema<typeof schema>;

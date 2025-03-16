@@ -3,7 +3,7 @@ export function request(ctx) {
     const messages = JSON.parse(ctx.args.messages) || [];
   
     return {
-      resourcePath: `/model/anthropic.claude-3-5-sonnet-20240620-v1:0/converse`,
+      resourcePath: `/model/us.anthropic.claude-3-5-sonnet-20240620-v1:0/converse`,
       method: "POST",
       params: {
         headers: {

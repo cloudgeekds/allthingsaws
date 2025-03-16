@@ -4,7 +4,7 @@ export function request(ctx) {
     const prompt = ctx.args.prompt;
   
     return {
-      resourcePath: `/model/anthropic.claude-3-5-sonnet-20240620-v1:0/invoke`,
+      resourcePath: `/model/us.anthropic.claude-3-5-sonnet-20240620-v1:0/invoke`,
       method: "POST",
       params: {
         headers: {

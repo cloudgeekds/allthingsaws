@@ -1,10 +1,18 @@
-import { Box, Header, Container, SpaceBetween} from "@cloudscape-design/components";
-import BaseAppLayout from "../components/base-app-layout";
 import { useState } from "react";
+import { 
+  Box, 
+  Header, 
+  Container, 
+  SpaceBetween,
+  Button,
+  TextContent
+} from "@cloudscape-design/components";
+import BaseAppLayout from "../components/base-app-layout";
 import { ChatMessages } from '../components/ChatMessages';
 import { ChatInput } from '../components/ChatInput';
 import { generateClient } from 'aws-amplify/api';
 import { type Schema } from '../../amplify/data/resource';
+import LoadingBar from "@cloudscape-design/chat-components/loading-bar";
 
 const client = generateClient<Schema>();
 
@@ -80,9 +88,6 @@ export default function HomePage() {
     }
   };
 
-
-
-
   const handleSendMessage = async (message: string) => {
     if (message.trim() !== "") {
       setIsLoading(true);
@@ -125,28 +130,45 @@ export default function HomePage() {
   return (
     <BaseAppLayout
       content={
-        <Container>
+        <Container
+          header={
+            <Header
+              variant="h1"
+              description="🚀 Tu éxito estudiantil es nuestra prioridad"
+            >
+               🤖 Tutor Académico LatamAI
+            </Header>
+          }
+        >
           <SpaceBetween size="l">
-            <Box margin={{ top: 'l' }}>
-              <Header
-                variant="h1"
-                description="🚀 Tu éxito estudiantil es nuestra prioridad"
-              >
-                ⚡ Tutor Académico LatamAI
-              </Header>
-            </Box>
-            
+
             {/* Chat Container */}
             <Box>
               {/* Chat Messages Area */}
-              <div style={{ 
-                height: '60vh', 
-                overflowY: 'auto', 
-                marginBottom: '20px', 
+              <div style={{
+                height: '60vh',
+                overflowY: 'auto',
+                marginBottom: '20px',
                 padding: '20px',
                 display: 'flex',
-                flexDirection: 'column-reverse'
+                flexDirection: 'column-reverse',
+                backgroundColor: '#f8f8f8',
+                borderRadius: '8px',
+                border: '1px solid #eaeded'
               }}>
+                {/* Loading Indicator */}
+                {isLoading && (
+                  <Container>
+                    <Box
+                      margin={{ bottom: "xs", left: "l" }}
+                      color="text-body-secondary"
+                    >
+                      Generando respuesta...
+                    </Box>
+                    <LoadingBar variant="gen-ai" />
+                  </Container>
+                )}
+
                 {chats
                   .slice()
                   .reverse()
@@ -162,15 +184,27 @@ export default function HomePage() {
                   ))}
               </div>
               
-              {/* Chat Input Area */}
-              <Box padding={{ bottom: 'l' }}>
+              {/* Input and Controls Area */}
+              <SpaceBetween size="m">
+                {/* Chat Input Area */}
                 <ChatInput
                   value={inputMessage}
                   onChange={setInputMessage}
                   onSend={handleSendMessage}
                   isLoading={isLoading}
                 />
-              </Box>
+                
+                {/* Clear Chat Button */}
+                <Box textAlign="right">
+                  <Button
+                    onClick={() => setChats([])}
+                    disabled={chats.length === 0 || isLoading}
+                    variant="link"
+                  >
+                    Limpiar conversación
+                  </Button>
+                </Box>
+              </SpaceBetween>
             </Box>
           </SpaceBetween>
         </Container>

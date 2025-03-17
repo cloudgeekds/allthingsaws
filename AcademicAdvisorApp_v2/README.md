@@ -5,10 +5,10 @@ This folder has the code artifacts to run an Academic Advisor App, using React f
 
 Run in sequence:
 
-npm install 
-cdk bootstrap aws://$ACCOUNT_ID/$REGION
-npx ampx sandbox -----> set up a new sandbox environment
-npm run dev ---------> run the starter project
+- npm install 
+- cdk bootstrap aws://$ACCOUNT_ID/$REGION
+- npx ampx sandbox -----> set up a new sandbox environment
+- npm run dev ---------> run the starter project
 
 ### AWS CLI
 
@@ -21,5 +21,5 @@ aws cognito-idp admin-set-user-password --user-pool-id USER_POOL_ID --username "
 Note: Attribute student_id is a custom attribute created in the user pool. Remove it if you don´t need it. 
 
 **Application**\
-![aws-reinvent2023-arc330-catalog](images/aws-reinvent2023-arc330-catalog.png)
+![Academic Advisor App](images/academic-advisor-app.png)
 

@@ -1,4 +1,4 @@
-import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+/*import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 const schema = a.schema({
   Profile: a.model({
@@ -83,4 +83,4 @@ export const data = defineData({
       expiresInDays: 30,
     },
   },
-});
+});*/

@@ -2,14 +2,14 @@ import { defineBackend } from '@aws-amplify/backend';
 import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 
 import { auth } from './auth/resource';
-import { data } from './data/resource';
+//import { data } from './data/resource';
 
 const backend = defineBackend({
   auth,
-  data,
+//  data,
 });
 
-const bedrockDataSource = backend.data.resources.graphqlApi.addHttpDataSource(
+/*const bedrockDataSource = backend.data.resources.graphqlApi.addHttpDataSource(
   "bedrockDS",
   "https://bedrock-runtime.us-east-2.amazonaws.com",
   {
@@ -29,7 +29,7 @@ bedrockDataSource.grantPrincipal.addToPrincipalPolicy(
     ],
     actions: ["bedrock:InvokeModel"],
   })
-);
+);*/
 
 
 // Add IAM policies for Bedrock

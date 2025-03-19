@@ -18,7 +18,7 @@ export const ChatMessages = ({ messages }: ChatMessagesProps) => {
       cardDefinition={{
         header: (item) => (
           <Box variant="strong">
-            {item.type === 'user' ? '👤 Tú' : '🤖 Tutor AI'}
+            {item.type === 'user' ? '👤 Tú' : '🤖 LatamAI'}
           </Box>
         ),
         sections: [

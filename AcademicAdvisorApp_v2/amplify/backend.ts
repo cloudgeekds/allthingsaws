@@ -30,3 +30,26 @@ bedrockDataSource.grantPrincipal.addToPrincipalPolicy(
     actions: ["bedrock:InvokeModel"],
   })
 );
+
+
+// Add IAM policies for Bedrock
+const bedrockPolicy = new PolicyStatement({
+  effect: Effect.ALLOW,
+  actions: ['bedrock:InvokeModel', 'bedrock:InvokeModelWithResponseStream', 'bedrock:GetAsyncInvoke'],
+  resources: [
+    "arn:aws:bedrock:*::foundation-model/*",
+    "arn:aws:bedrock:*:*:inference-profile/*",
+    "arn:aws:bedrock:*:*:async-invoke/*"
+  ],
+});
+
+const bedrockAgentPolicy = new PolicyStatement({
+  effect: Effect.ALLOW,
+  actions: ['bedrock:InvokeAgent','bedrock:InvokeInlineAgent'],
+  resources: [
+    `*`
+  ],
+});
+
+backend.auth.resources.authenticatedUserIamRole.addToPrincipalPolicy(bedrockPolicy)
+backend.auth.resources.authenticatedUserIamRole.addToPrincipalPolicy(bedrockAgentPolicy)

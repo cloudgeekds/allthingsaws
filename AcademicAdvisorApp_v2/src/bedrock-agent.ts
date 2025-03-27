@@ -64,7 +64,7 @@ import {
     /** Bedrock client instance for API communication */
     private bedrockClient: BedrockAgentRuntimeClient;
     /** Alias ID for the Bedrock agent */
-    private readonly agentAliasId = "IDN8RYND4X";
+    private readonly agentAliasId = "SIBJXIZWJM";
   
     /**
      * Creates an instance of AgentService.
